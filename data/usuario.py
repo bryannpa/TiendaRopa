@@ -24,3 +24,11 @@ def crearar_usuario(usuario: UsuarioBase):
     new_usuario_ID = UsuarioID(id=new_id, **usuario.model_dump())
     write_usuario_into_csv(new_usuario_ID)
     return new_usuario_ID
+
+def read_all_usuarios():
+    try:
+        with open(data_base, "r", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile, fieldnames=column_fields)
+            return [UsuarioID(**row)for row in reader]
+    except FileNotFoundError:
+        return []
