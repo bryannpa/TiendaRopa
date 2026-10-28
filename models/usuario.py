@@ -6,5 +6,5 @@ class UsuarioBase(BaseModel):
     correo: str
     telefono: str
 
-class Usuario(UsuarioBase):
+class UsuarioID(UsuarioBase):
     id: int
