@@ -13,3 +13,9 @@ def auto_id():
             max_id = max(int(row["id"])for row in reader)
     except (FileNotFoundError, ValueError):
         return 1
+
+def write_usuario_into_csv(resgistrar: UsuarioID):
+    with open(data_base, mode="a", newline="",encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=column_fields)
+        writer.writerow(resgistrar.model_dump())
+
