@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Prenda(BaseModel):
+class PrendaBase(BaseModel):
     nombre: str
     tipo: str
     talla: str
