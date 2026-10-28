@@ -19,3 +19,8 @@ def write_usuario_into_csv(resgistrar: UsuarioID):
         writer = csv.DictWriter(csvfile, fieldnames=column_fields)
         writer.writerow(resgistrar.model_dump())
 
+def crearar_usuario(usuario: UsuarioBase):
+    new_id = auto_id()
+    new_usuario_ID = UsuarioID(id=new_id, **usuario.model_dump())
+    write_usuario_into_csv(new_usuario_ID)
+    return new_usuario_ID
