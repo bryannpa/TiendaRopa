@@ -3,7 +3,7 @@ import csv
 from models.prenda import PrendaBase, PrendaID
 
 data_base = "prendas.csv"
-column_fields = ["id", "tipo", "talla", "color", "precio", "cantidad", "vendedor_id"]
+column_fields = ["id", "tipo", "talla", "precio", "cantidad", "color", "vendedor_id"]
 
 def auto_id():
     try:
@@ -29,7 +29,23 @@ def read_prenda():
     try:
         with open(data_base, "r", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, fieldnames=column_fields)
-            return [PrendaID(**row) for row in reader]
+            prendas = []
+
+            for row in reader:
+                prenda = PrendaID(
+                    id=int(row["id"]),
+                    tipo=row["tipo"],
+                    talla=row["talla"],
+                    precio=float(row["precio"]),
+                    cantidad=int(row["cantidad"]),
+                    color=row["color"],
+                    vendedor_id=int(row["vendedor_id"]),
+                )
+                prendas.append(prenda)
+            return prendas
+
     except FileNotFoundError:
         return []
+
+
 

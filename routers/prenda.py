@@ -22,7 +22,7 @@ def registar_prenda(prerenda: PrendaBase):
     nueva_prenda = crear_prenda(prerenda)
     return PrendaRespuesta(**nueva_prenda.model_dump(), nombre_vendedor=vendedor_encontrado.nombre)
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=list[PrendaID])
+@router.get("/", status_code=status.HTTP_200_OK, response_model=list[PrendaRespuesta])
 def mostrar_prenda():
     prendas = read_prenda()
     vendedores = read_all_vendedores()
@@ -39,4 +39,4 @@ def mostrar_prenda():
 
         prenda_respuesta = PrendaRespuesta(**prenda.model_dump(),nombre_vendedor=nombre_vendedor)
         resultados.append(prenda_respuesta)
-        return resultados
+    return resultados
