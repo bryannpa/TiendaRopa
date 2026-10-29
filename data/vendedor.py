@@ -25,3 +25,11 @@ def crear_vendedor(vendedor: VendedorBase):
     new_vendedor_ID = VendedorID(id=new_id, **vendedor.model_dump())
     write_vendedor_into_csv(new_vendedor_ID)
     return new_vendedor_ID
+
+def read_all_vendedores():
+    try:
+        with open(data_base,"r",newline="",encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile, fieldnames=column_fields)
+            return [VendedorBase(**row) for row in reader]
+    except FileNotFoundError:
+        return []
