@@ -12,3 +12,6 @@ class PrendaBase(BaseModel):
 
 class PrendaID(PrendaBase):
     id : int
+
+class PrendaRespuesta(PrendaBase):
+    nombre_vendedor: str
