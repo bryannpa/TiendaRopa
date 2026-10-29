@@ -4,7 +4,7 @@ from data.prenda import column_fields
 from models.vendedor import VendedorBase, VendedorID
 
 data_base = "vendedor.csv"
-column_fields = ["id", " nombre", "apellido", "correo", "telefono"]
+column_fields = ["id", "nombre", "apellido", "correo", "telefono"]
 
 def  auto_id():
     try:
@@ -30,6 +30,6 @@ def read_all_vendedores():
     try:
         with open(data_base,"r",newline="",encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, fieldnames=column_fields)
-            return [VendedorBase(**row) for row in reader]
+            return [VendedorID(**row) for row in reader]
     except FileNotFoundError:
         return []
