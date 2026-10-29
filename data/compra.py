@@ -19,3 +19,9 @@ def write_compra_into_csv(registrar: CompraID):
     with open(data_base, mode="a", newline="",encoding="utf-8") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=column_fields)
         writer.writerow(registrar.model_dump())
+
+def crear_compra(compra: CompraBase):
+    new_id = auto_id()
+    new_compra_ID = CompraID(id=new_id, **compra.model_dump())
+    write_compra_into_csv(new_compra_ID)
+    return new_compra_ID
