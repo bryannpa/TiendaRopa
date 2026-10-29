@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import prenda, usuario, vendedor
+from routers import prenda, usuario, vendedor, compra
 
 app = FastAPI()
 
@@ -19,4 +19,10 @@ app.include_router(
     router=vendedor.router,
     prefix="/vendedor",
     tags=["vendedor"],
+)
+
+app.include_router(
+    router=compra.router,
+    prefix="/compra",
+    tags=["compra"],
 )

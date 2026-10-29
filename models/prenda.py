@@ -7,6 +7,8 @@ class PrendaBase(BaseModel):
     precio: float
     cantidad: int
     color: str
+    vendedor_id: int
+
 
 class PrendaID(PrendaBase):
     id : int
