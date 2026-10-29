@@ -1,6 +1,8 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
 from models.compra import CompraID,CompraBase
 from data.compra import crear_compra, read_all_compras
+from data.prenda import read_prenda
+from data.usuario import read_all_usuarios
 
 router = APIRouter()
 

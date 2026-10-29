@@ -1,10 +1,10 @@
 import csv
 
-from data.prenda import column_fields
+
 from models.compra import  CompraBase, CompraID
 
 data_base = "compras.csv"
-column_fields = ["id", "usuario_id", "prenda_id", "cantidad"]
+column_fields = ["id", "usuario_id", "prenda_id","vendedor_id", "cantidad"]
 
 def auto_id():
     try:
@@ -30,6 +30,17 @@ def read_all_compras():
     try:
         with open(data_base, "r", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, fieldnames=column_fields)
-            return [CompraID(**row)for row in reader]
+            compras = []
+
+            for row in reader:
+                compra = CompraID(
+                    id=int(row["id"]),
+                    usuario_id=int(row["usuario_id"]),
+                    prenda_id=int(row["prenda_id"]),
+                    vendedor_id=int(row["vendedor_id"]),
+                    cantidad=int(row["cantidad"])
+                )
+                compras.append(compra)
+            return compras
     except FileNotFoundError:
         return []
