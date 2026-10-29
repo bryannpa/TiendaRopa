@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 
-class VendediroBase(BaseModel):
+class VendedorBase(BaseModel):
     nombre: str
     apellido: str
     correo: str
     telefono: str
 
-class VendedorID(VendediroBase):
+class VendedorID(VendedorBase):
     id: int
