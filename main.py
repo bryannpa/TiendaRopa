@@ -23,6 +23,6 @@ app.include_router(
 
 app.include_router(
     router=compra.router,
-    prefix="/compra",
-    tags=["compra"],
+    prefix="/compras",
+    tags=["compras"],
 )
