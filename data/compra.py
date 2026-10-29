@@ -14,3 +14,8 @@ def auto_id():
             return max_id + 1
     except (FileNotFoundError, ValueError):
         return 1
+
+def write_compra_into_csv(registrar: CompraID):
+    with open(data_base, mode="a", newline="",encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=column_fields)
+        writer.writerow(registrar.model_dump())
