@@ -3,7 +3,7 @@ import csv
 from models.prenda import PrendaBase, PrendaID
 
 data_base = "prendas.csv"
-column_fields = ["id", "nombre", "tipo", "talla", "color", "precio", "cantidad", "vendedor_id"]
+column_fields = ["id", "tipo", "talla", "color", "precio", "cantidad", "vendedor_id"]
 
 def auto_id():
     try:

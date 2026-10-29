@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 class PrendaBase(BaseModel):
-    nombre: str
     tipo: str
     talla: str
     precio: float
