@@ -6,3 +6,5 @@ class VendediroBase(BaseModel):
     correo: str
     telefono: str
 
+class VendedorID(VendediroBase):
+    id: int
