@@ -6,4 +6,8 @@ router = APIRouter()
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=VendedorID)
 def registrar_vendedor(vendedor: VendedorBase):
-    return registrar_vendedor(vendedor)
+    return crear_vendedor(vendedor)
+
+@router.get("/",status_code=status.HTTP_200_OK, response_model=list[VendedorID])
+def mostrar_vendedores():
+    return read_all_vendedores()
