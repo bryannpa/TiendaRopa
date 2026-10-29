@@ -25,3 +25,11 @@ def crear_compra(compra: CompraBase):
     new_compra_ID = CompraID(id=new_id, **compra.model_dump())
     write_compra_into_csv(new_compra_ID)
     return new_compra_ID
+
+def read_all_compras():
+    try:
+        with open(data_base, "r", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile, fieldnames=column_fields)
+            return [CompraID(**row)for row in reader]
+    except FileNotFoundError:
+        return []
