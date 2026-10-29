@@ -10,6 +10,6 @@ router = APIRouter()
 def mostrar_usuario(usuario: UsuarioBase):
     return crearar_usuario(usuario)
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=List[UsuarioID])
+@router.get("/", status_code=status.HTTP_200_OK, response_model=list[UsuarioID])
 def mostrar_usuarios():
     return read_all_usuarios()
